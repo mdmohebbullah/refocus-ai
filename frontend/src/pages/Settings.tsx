@@ -97,6 +97,19 @@ export function SettingsPage() {
       <Card className="p-5">
         <SectionTitle><span className="flex items-center gap-2"><Laptop className="h-4 w-4" />Browser extension & devices</span></SectionTitle>
         <p className="mb-3 text-[13px] text-muted">Your projects, checkpoints and notes sync to every device where you sign in. Browser data is only collected on browsers you pair here, and each one can be turned off.</p>
+        <div className="mb-4 rounded-lg border-2 border-dashed border-ink/40 bg-canvas p-4 text-sm">
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+            <span className="font-semibold">Get the Chrome extension (optional, lets Re-Focus AI see the tabs you choose)</span>
+            <a href="/refocus-ai-extension.zip" download className="inline-flex h-9 items-center gap-2 rounded-md border-2 border-ink bg-navy px-3 font-semibold text-[rgb(var(--on-navy))] sketch-sm">
+              <Download className="h-4 w-4" />Download the extension</a>
+          </div>
+          <ol className="list-decimal space-y-1 pl-5 text-[14px]">
+            <li>Unzip the downloaded file (double-click it).</li>
+            <li>In Chrome, open <code className="rounded bg-surface px-1">chrome://extensions</code>, turn on <b>Developer mode</b> (top right), click <b>Load unpacked</b> and choose the unzipped folder.</li>
+            <li>Below, press <b>Create device token</b> and copy it.</li>
+            <li>Click the Re-Focus AI icon in Chrome's toolbar (puzzle piece, then pin), paste the token and press <b>Pair this browser</b>.</li>
+          </ol>
+        </div>
         <ul className="mb-4 divide-y divide-line">
           {devices.data?.devices.map(d => (
             <li key={d.id} className="flex flex-wrap items-center gap-3 py-2 text-sm">
