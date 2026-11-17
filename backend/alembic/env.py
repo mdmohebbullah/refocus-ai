@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from app.config import get_settings  # noqa: E402
 from app.db import Base  # noqa: E402
 from app import models  # noqa: E402,F401
-config.set_main_option("sqlalchemy.url", os.environ.get("DATABASE_URL") or get_settings().database_url)
+config.set_main_option("sqlalchemy.url", get_settings().database_url)
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
