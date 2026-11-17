@@ -14,3 +14,4 @@ python-multipart==0.0.32
 python-docx==1.2.0
 openai==3.51.0
 psycopg2-binary==2.9.13
+psycopg[binary]>=3.2,<4
