@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vintage sketchbook theme: cream paper, ink outlines, hand lettering. Solid = fact, dashed amber = AI. */
+:root {
+  --ink: 43 42 38;        /* #2B2A26 ink */
+  --muted: 92 84 71;      /* #5C5447 */
+  --line: 168 152 122;    /* #A8987A pencil */
+  --canvas: 243 234 215;  /* #F3EAD7 paper */
+  --surface: 251 246 234; /* #FBF6EA card */
+  --navy: 44 74 110;      /* #2C4A6E ink blue */
+  --fact: 44 74 110;
+  --fact-bg: 226 231 236;
+  --guess: 164 86 26;     /* amber: AI guess */
+  --guess-bg: 248 227 196;
+  --ok: 62 107 71;
+  --ok-bg: 221 231 210;
+  --danger: 158 42 30;
+  --danger-bg: 246 214 204;
+  --excl: 150 140 120;
+  --on-navy: 251 246 234;
+  color-scheme: light;
+}
+
+.dark {
+  --ink: 236 226 204;
+  --muted: 190 178 156;
+  --line: 98 90 76;
+  --canvas: 31 29 26;
+  --surface: 43 40 35;
+  --navy: 214 178 120;
+  --fact: 160 190 222;
+  --fact-bg: 44 54 66;
+  --guess: 236 168 100;
+  --guess-bg: 64 44 24;
+  --ok: 150 200 150;
+  --ok-bg: 34 52 38;
+  --danger: 240 140 120;
+  --danger-bg: 66 30 24;
+  --excl: 130 122 108;
+  --on-navy: 31 29 26;
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+body { @apply bg-canvas text-ink font-sans antialiased; font-size: 16px;
+  background-image: radial-gradient(rgb(var(--line) / 0.22) 1px, transparent 1.2px); background-size: 22px 22px; }
+
+/* Patrick Hand has a small x-height: scale it so 13–15px labels stay readable */
+body { font-size-adjust: 0.5; }
+.font-hand, .font-serif, .rf-editor .ProseMirror, code, pre { font-size-adjust: none; }
+
+/* hand-drawn corners: uneven radii read as sketched boxes */
+.rounded-md { border-radius: 10px 4px 9px 5px / 5px 9px 4px 10px; }
+.rounded-lg { border-radius: 16px 6px 14px 7px / 7px 14px 6px 16px; }
+.rounded-xl { border-radius: 20px 8px 18px 9px / 9px 18px 8px 20px; }
+.sketch { box-shadow: 4px 4px 0 rgb(var(--ink) / 0.8); }
+.sketch-sm { box-shadow: 3px 3px 0 rgb(var(--ink) / 0.85); }
+
+:focus-visible { outline: 2px solid rgb(var(--fact)); outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* TipTap editor */
+.rf-editor .ProseMirror { @apply font-serif text-[17px] leading-[1.8] text-ink outline-none min-h-[50vh]; }
+.rf-editor .ProseMirror p { margin: 0 0 1em; }
+.rf-editor .ProseMirror h1 { @apply font-hand text-[34px] font-bold mb-3; }
+.rf-editor .ProseMirror h2 { @apply font-hand text-[28px] font-bold mt-6 mb-2; }
+.rf-editor .ProseMirror h3 { @apply font-sans text-lg font-semibold mt-4 mb-2; }
+.rf-editor .ProseMirror ul, .rf-editor .ProseMirror ol { padding-left: 1.4em; margin-bottom: 1em; }
+.rf-editor .ProseMirror blockquote { border-left: 3px solid rgb(var(--line)); padding-left: 1em; color: rgb(var(--muted)); }
+.rf-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder); color: rgb(var(--excl)); float: left; height: 0; pointer-events: none;
+}
+.rf-editor .ProseMirror mark { background: rgb(var(--fact-bg)); box-shadow: 0 0 0 2px rgb(var(--fact-bg)); border-radius: 2px; color: inherit; }
+.rf-editor .ProseMirror .rf-resume-mark { background: rgb(var(--fact-bg)); outline: 2px solid rgb(var(--fact) / 0.5); border-radius: 3px; }
+
+.diff-add { background: rgb(var(--ok-bg)); color: rgb(var(--ok)); text-decoration: none; }
+.diff-del { background: rgb(var(--danger-bg)); color: rgb(var(--danger)); text-decoration: line-through; }

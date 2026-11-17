@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Re-Focus AI</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="../icons/32.png" alt="" width="22" height="22" />
+    <strong>Re-Focus AI</strong>
+    <span id="status" class="pill">…</span>
+  </header>
+
+  <section id="pair" hidden>
+    <p class="muted">Pair this browser with your Re-Focus AI account. In the web app, open <b>Settings &amp; Privacy → Browser extension</b> and create a device token.</p>
+    <label for="apiBase">API address</label>
+    <input id="apiBase" type="url" />
+    <label for="appUrl">Web app address</label>
+    <input id="appUrl" type="url" />
+    <label for="token">Device token</label>
+    <input id="token" type="password" placeholder="rfd_…" autocomplete="off" />
+    <button id="pairBtn" class="primary">Pair this browser</button>
+    <p id="pairErr" class="error" role="alert"></p>
+  </section>
+
+  <main id="main" hidden>
+    <label for="project">Project</label>
+    <select id="project"></select>
+
+    <div class="row">
+      <button id="pauseBtn" class="primary">Pause session</button>
+      <button id="openBtn">Open dashboard</button>
+    </div>
+
+    <details open>
+      <summary>Tabs for this project <span id="tabCount" class="muted"></span></summary>
+      <div class="row small"><button id="selAll">Select all</button><button id="selNone">Deselect all</button></div>
+      <ul id="tabs" class="list"></ul>
+      <p class="muted tiny">Unselected tabs are never used by the AI. Sensitive sites (banking, email, health, sign-in pages) are never sent.</p>
+    </details>
+
+    <details>
+      <summary>Quick capture thought</summary>
+      <label for="thought">What were you thinking?</label>
+      <textarea id="thought" rows="3"></textarea>
+      <button id="saveThought">Save thought</button>
+    </details>
+
+    <details>
+      <summary>Save this page as a source</summary>
+      <label for="why">Why I saved this (optional)</label>
+      <input id="why" />
+      <button id="saveSource">Save source</button>
+    </details>
+
+    <details>
+      <summary>Recent activity</summary>
+      <ul id="activity" class="list"></ul>
+    </details>
+
+    <details>
+      <summary>Privacy</summary>
+      <label class="check"><input type="checkbox" id="collect" /> Collect tabs from this browser</label>
+      <label class="check"><input type="checkbox" id="history" /> Include last 60 minutes of history (asks for permission)</label>
+      <label class="check"><input type="checkbox" id="content" /> Share page text of selected tabs (asks for permission)</label>
+      <label class="check"><input type="checkbox" id="private" /> Private mode (collect nothing anywhere)</label>
+      <button id="unpair" class="link">Unpair this browser</button>
+    </details>
+    <p id="msg" class="muted tiny" role="status"></p>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

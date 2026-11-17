@@ -1,0 +1,28 @@
+@font-face { font-family: 'Patrick Hand'; src: url(../fonts/PatrickHand.woff2) format('woff2'); }
+@font-face { font-family: 'Caveat'; font-weight: 700; src: url(../fonts/Caveat-Bold.woff2) format('woff2'); }
+/* vintage sketchbook theme, matching the web app */
+:root { --ink:#2B2A26; --muted:#5C5447; --line:#A8987A; --canvas:#F3EAD7; --navy:#2C4A6E; --fact-bg:#E2E7EC; --danger:#9E2A1E; --ok:#3E6B47; --card:#FBF6EA; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --ink:#ECE2CC; --muted:#BEB29C; --line:#625A4C; --canvas:#1F1D1A; --navy:#D6B278; --fact-bg:#2C3642; --danger:#F08C78; --ok:#96C896; --card:#2B2823; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { width: 360px; margin: 0; font: 15px/1.4 'Patrick Hand', 'Comic Sans MS', system-ui, sans-serif; color: var(--ink); background: var(--canvas); }
+header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 2px solid var(--ink); }
+header strong { color: var(--navy); font: 700 24px/1 Caveat, 'Brush Script MT', cursive; }
+section, main { padding: 12px; }
+label { display: block; font-weight: 600; margin: 8px 0 4px; }
+label.check { font-weight: 400; display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
+input, select, textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px 3px 7px 4px; padding: 6px 8px; font: inherit; background: var(--card); color: var(--ink); }
+input[type=checkbox] { width: auto; margin-top: 2px; accent-color: var(--navy); }
+button { border: 2px solid var(--ink); background: var(--card); color: var(--ink); border-radius: 9px 3px 8px 4px; padding: 7px 10px; font: inherit; font-weight: 600; cursor: pointer; min-height: 32px; }
+button.primary { background: var(--navy); color: var(--card); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+@media (prefers-color-scheme: dark) { button.primary { color: #1F1D1A; } }
+button.link { border: 0; color: var(--danger); text-decoration: underline; padding: 6px 0; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 1px; }
+.row { display: flex; gap: 8px; margin: 10px 0; } .row button { flex: 1; } .row.small button { padding: 4px 8px; min-height: 28px; font-weight: 500; }
+details { border-top: 1px solid var(--line); padding: 8px 0; } summary { cursor: pointer; font-weight: 600; padding: 2px 0; }
+.list { list-style: none; margin: 4px 0; padding: 0; max-height: 200px; overflow-y: auto; }
+.list li { display: flex; gap: 8px; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.list li img { width: 16px; height: 16px; } .list li .t { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.pill { margin-left: auto; font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; color: var(--muted); }
+.pill.ok { color: var(--ok); border-color: var(--ok); }
+.muted { color: var(--muted); } .tiny { font-size: 11px; } .error { color: var(--danger); }
+textarea + button, input + button { margin-top: 6px; }
